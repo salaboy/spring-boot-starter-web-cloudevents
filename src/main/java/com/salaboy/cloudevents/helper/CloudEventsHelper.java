@@ -6,7 +6,6 @@ import io.cloudevents.v03.CloudEventBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
@@ -55,7 +54,7 @@ public class CloudEventsHelper {
         if (cloudEvent.getData().isPresent()) {
             data = cloudEvent.getData().get();
         }
-        
+
         HttpEntity<String> request = new HttpEntity<String>(data, headers);
 
         return restTemplate.postForEntity(uriString, request, String.class);
