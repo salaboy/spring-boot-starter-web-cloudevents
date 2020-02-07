@@ -40,7 +40,7 @@ public class CloudEventsHelper {
     }
 
 
-    public static ResponseEntity<String> createPostCloudEvent(RestTemplate restTemplate, String uriString, CloudEvent<AttributesImpl, String> cloudEvent) {
+    public static ResponseEntity<String> createPostCloudEvent(RestTemplate restTemplate, String host, CloudEvent<AttributesImpl, String> cloudEvent) {
         AttributesImpl attributes = cloudEvent.getAttributes();
         HttpHeaders headers = new HttpHeaders();
         headers.add(CE_ID, attributes.getId());
@@ -57,11 +57,7 @@ public class CloudEventsHelper {
 
         HttpEntity<String> request = new HttpEntity<String>(data, headers);
 
-        return restTemplate.postForEntity(uriString, request, String.class);
-    }
-
-    public static ResponseEntity<String> createPostCloudEvent(RestTemplate restTemplate, CloudEvent<AttributesImpl, String> cloudEvent) {
-        return createPostCloudEvent(restTemplate, "", cloudEvent);
+        return restTemplate.postForEntity(host, request, String.class);
     }
 
 
