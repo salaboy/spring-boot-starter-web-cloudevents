@@ -61,7 +61,7 @@ public class CloudEventsHelper {
     }
 
     public static ResponseEntity<String> createPostCloudEvent(RestTemplate restTemplate, CloudEvent<AttributesImpl, String> cloudEvent) {
-        return createPostCloudEvent(restTemplate, cloudEvent);
+        return createPostCloudEvent(restTemplate, "", cloudEvent);
     }
 
 
